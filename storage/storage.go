@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"log"
 	"sync"
+
+	//hjhj h
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var (
@@ -16,16 +19,16 @@ var (
 func NewMysqlDB() {
 	once.Do(func() {
 		var err error
-		db, err = sql.Open("mysql", "root@localhost:password@tcp(localhost:3306)/empresa2")
+		db, err = sql.Open("mysql", "root:@tcp(localhost:3306)/empresa2")
 		if err != nil {
 			log.Fatalf("can´t open db: %v", err)
 		}
 		if err = db.Ping(); err != nil {
 			log.Fatalf("can´t do ping: %v", err)
 		}
-
+		fmt.Println("Prueba")
 	})
-	fmt.Println("Prueba")
+
 }
 
 //Pool return a unique instance of db
