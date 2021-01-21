@@ -19,7 +19,7 @@ var (
 func NewMysqlDB() {
 	once.Do(func() {
 		var err error
-		db, err = sql.Open("mysql", "root:@tcp(localhost:3306)/empresa2")
+		db, err = sql.Open("mysql", "root:@tcp(localhost:3306)/pruebago")
 		if err != nil {
 			log.Fatalf("can´t open db: %v", err)
 		}

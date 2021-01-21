@@ -10,9 +10,7 @@ const (
 			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 			name VARCHAR(25) NOT NULL,
 			observations VARCHAR(100),
-			price INT NOT NULL,
-			created_at TIMESTAMP NOT NULL DEFAULT now(),
-			updated_at TIMESTAMP
+			price INT NOT NULL
 		)`
 )
 
