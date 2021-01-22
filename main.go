@@ -4,12 +4,14 @@ import (
 	"log"
 
 	"github.com/doCodingWhileCoding/GO-DB/pkg/invoiceheader"
+	"github.com/doCodingWhileCoding/GO-DB/pkg/invoiceitem"
 	"github.com/doCodingWhileCoding/GO-DB/pkg/product"
 	"github.com/doCodingWhileCoding/GO-DB/storage"
 )
 
 func main() {
 	storage.NewMysqlDB()
+
 	storageProduct := storage.NewMySQLProduct(storage.Pool())
 	serviceProduct := product.NewService(storageProduct)
 	if err := serviceProduct.Migrate(); err != nil {
@@ -19,5 +21,10 @@ func main() {
 	serviceInvoiceHeader := invoiceheader.NewService(storageInvoiceHeader)
 	if err := serviceInvoiceHeader.Migrate(); err != nil {
 		log.Fatalf("invoiceHeader.Migrate: %v", err)
+	}
+	storageInvoiceItem := storage.NewMySQLInvoiceItem(storage.Pool())
+	serviceInvoiceItem := invoiceitem.NewService(storageInvoiceItem)
+	if err := serviceInvoiceItem.Migrate(); err != nil {
+		log.Fatalf("invoiceItem.Migrate: %v", err)
 	}
 }

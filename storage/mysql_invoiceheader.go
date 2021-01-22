@@ -8,7 +8,7 @@ import (
 const (
 	mySQLMigrateInvoiceHeader = `CREATE TABLE IF NOT EXISTS invoice_headers (
 			id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-			client VARCHAR(100) NOT NULL,
+			client VARCHAR(100) NOT NULL
 		)`
 )
 
