@@ -2,7 +2,6 @@ package storage
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"sync"
 
@@ -26,7 +25,7 @@ func NewMysqlDB() {
 		if err = db.Ping(); err != nil {
 			log.Fatalf("can´t do ping: %v", err)
 		}
-		fmt.Println("Prueba")
+		//fmt.Println("Prueba")
 	})
 
 }
