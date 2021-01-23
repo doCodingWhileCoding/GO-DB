@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/doCodingWhileCoding/GO-DB/pkg/product"
@@ -11,7 +10,8 @@ import (
 func main() {
 	storage.NewMysqlDB()
 
-	//Creación de las tablas
+	//Creación de las tablas//////////////////////////////////////////
+
 	/*storageProduct := storage.NewMySQLProduct(storage.Pool())
 	serviceProduct := product.NewService(storageProduct)
 	if err := serviceProduct.Migrate(); err != nil {
@@ -28,8 +28,9 @@ func main() {
 		log.Fatalf("invoiceItem.Migrate: %v", err)
 	}*/
 
-	//Inserción de datos
-	storageProduct := storage.NewMySQLProduct(storage.Pool())
+	//Inserción de datos (CREATE)///////////////////////////////////////////
+
+	/*storageProduct := storage.NewMySQLProduct(storage.Pool())
 	serviceProduct := product.NewService(storageProduct)
 
 	m := &product.Model{
@@ -40,5 +41,55 @@ func main() {
 	if err := serviceProduct.Create(m); err != nil {
 		log.Fatalf("product.Create: %v", err)
 	}
-	fmt.Printf("%+v\n", m)
+	fmt.Printf("%+v\n", m)*/
+
+	//Obtención de datos (READ)/////////////////////////////////////////////////
+
+	//conjunto de filas//////////
+
+	/*storageProduct := storage.NewMySQLProduct(storage.Pool())
+	serviceProduct := product.NewService(storageProduct)
+	ms, err := serviceProduct.GetAll()
+	if err != nil {
+		log.Fatalf("product.GetAll: %v", err)
+	}
+	fmt.Println(ms)*/
+
+	//Una unica fila////////////
+
+	/*storageProduct := storage.NewMySQLProduct(storage.Pool())
+	serviceProduct := product.NewService(storageProduct)
+
+	m, err := serviceProduct.GetByID(1)
+	switch {
+	case errors.Is(err, sql.ErrNoRows):
+		fmt.Println("No hay un producto con ese id")
+	case err != nil:
+		log.Fatalf("product.GetByID: %v", err)
+	default:
+		fmt.Println(m)
+	}*/
+
+	//Alteración de datos (UPDATE) /////////////////////////////////////////////////////
+	/*storageProduct := storage.NewMySQLProduct(storage.Pool())
+	serviceProduct := product.NewService(storageProduct)
+
+	m := &product.Model{
+		Name:  "Curso de testing con GO",
+		Price: 50,
+		ID:    1,
+	}
+	err := serviceProduct.Update(m)
+	if err != nil {
+		log.Fatalf("product.Update: %v", err)
+	}*/
+
+	//Eliminación de datos (DELETE) /////////////////////////////////////////////////
+	storageProduct := storage.NewMySQLProduct(storage.Pool())
+	serviceProduct := product.NewService(storageProduct)
+
+	err := serviceProduct.Delete(1)
+	if err != nil {
+		log.Fatalf("product.Delete: %v", err)
+	}
 }

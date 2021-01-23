@@ -1,5 +1,7 @@
 package invoiceheader
 
+import "database/sql"
+
 //Model of invoice header
 type Model struct {
 	ID     uint
@@ -9,11 +11,7 @@ type Model struct {
 //Storage interface that must implement a db storage
 type Storage interface {
 	Migrate() error
-	//Create(*Model) error
-	//Update(*Model) error
-	//GetAll() (Models, error)
-	//GetById(uint) (*Model, error)
-	//Delete(uint) error
+	CreateTx(*sql.Tx, *Model) error
 }
 
 //Service of invoiceheader

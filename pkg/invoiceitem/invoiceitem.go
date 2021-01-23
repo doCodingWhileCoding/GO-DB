@@ -1,5 +1,7 @@
 package invoiceitem
 
+import "database/sql"
+
 //Model of invoice
 type Model struct {
 	ID              uint
@@ -7,14 +9,13 @@ type Model struct {
 	ProductID       uint
 }
 
+//Models slice of Model
+type Models []*Model
+
 //Storage interface that must implement a db storage
 type Storage interface {
 	Migrate() error
-	//Create(*Model) error
-	//Update(*Model) error
-	//GetAll() (Models, error)
-	//GetById(uint) (*Model, error)
-	//Delete(uint) error
+	CreateTx(*sql.Tx, uint, Models) error
 }
 
 //Service of invoiceitem

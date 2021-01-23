@@ -18,7 +18,7 @@ var (
 func NewMysqlDB() {
 	once.Do(func() {
 		var err error
-		db, err = sql.Open("mysql", "root:@tcp(localhost:3306)/pruebago")
+		db, err = sql.Open("mysql", "root:@tcp(localhost:3306)/pruebago?parseTime=true")
 		if err != nil {
 			log.Fatalf("can´t open db: %v", err)
 		}
@@ -33,4 +33,12 @@ func NewMysqlDB() {
 //Pool return a unique instance of db
 func Pool() *sql.DB {
 	return db
+}
+
+func stringToNull(s string) sql.NullString {
+	null := sql.NullString{String: s}
+	if null.String != "" {
+		null.Valid = true
+	}
+	return null
 }
