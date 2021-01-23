@@ -1,13 +1,9 @@
 package invoiceheader
 
-import "time"
-
 //Model of invoice header
 type Model struct {
-	ID        uint
-	Client    string
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	ID     uint
+	Client string
 }
 
 //Storage interface that must implement a db storage
