@@ -2,6 +2,7 @@ package storage
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/doCodingWhileCoding/GO-DB/pkg/invoice"
 	"github.com/doCodingWhileCoding/GO-DB/pkg/invoiceheader"
@@ -41,6 +42,7 @@ func (p *MySQLInvoice) Create(m *invoice.Model) error {
 		return err
 	}
 
+	fmt.Printf("items creados: %d \n", len(m.Items))
 	return tx.Commit()
 
 }
