@@ -1,11 +1,6 @@
 package main
 
 import (
-	"log"
-
-	"github.com/doCodingWhileCoding/GO-DB/pkg/invoice"
-	"github.com/doCodingWhileCoding/GO-DB/pkg/invoiceheader"
-	"github.com/doCodingWhileCoding/GO-DB/pkg/invoiceitem"
 	"github.com/doCodingWhileCoding/GO-DB/storage"
 )
 
@@ -96,7 +91,7 @@ func main() {
 	}*/
 
 	//Transacciones /////////////////////////////////////////////////////////////////
-	storageHeader := storage.NewMySQLInvoiceHeader(storage.Pool())
+	/*storageHeader := storage.NewMySQLInvoiceHeader(storage.Pool())
 	storageItems := storage.NewMySQLInvoiceItem(storage.Pool())
 	storageInvoice := storage.NewMySQLInvoice(
 		storage.Pool(),
@@ -118,5 +113,5 @@ func main() {
 	serviceInvoice := invoice.NewService(storageInvoice)
 	if err := serviceInvoice.Create(m); err != nil {
 		log.Fatalf("product.Delete: %v", err)
-	}
+	}*/
 }
